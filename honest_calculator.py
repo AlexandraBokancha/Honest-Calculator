@@ -28,9 +28,9 @@ def check(var1, var2, var3):
     msg = ""
     if is_one_digit(var1) is True and is_one_digit(var2) is True:
         msg = msg + msg_6
-    if (var1 == 1 or var2 == 1) and var3 == '*':
+    if (var1 == 1 or var2 == 1) and var3 == "*":
         msg = msg + msg_7
-    if (var1 == 0 or var2 == 0) and (var3 == '*' or var3 == '+' or var3 == '-'):
+    if (var1 == 0 or var2 == 0) and (var3 == "*" or var3 == "+" or var3 == "-"):
         msg = msg + msg_8
     if msg != "":
         msg = msg_9 + msg
@@ -74,28 +74,30 @@ while True:
     answer = input()
 
     if answer == "y":
-        if is_one_digit(result) is True:
+        if is_one_digit(result):
             msg_index = 10
-            print(messages[msg_index])
-            answer = input()
-            if answer == "y" and msg_index < 12:
-                msg_index += 1
+            while True:
                 print(messages[msg_index])
-                answer = input()
-                if answer == "y" and msg_index < 12:
-                    msg_index += 1
-                    print(messages[msg_index])
-                    answer = input()
-
-    if answer == "y":
-        memory = result
-        print(msg_5)
-        answer = input()
+                answer2 = input()
+                if answer2 == "y":
+                    if msg_index < 12:
+                        msg_index += 1
+                    else:
+                        memory = result
+                        break
+                if answer2 == "n":
+                    break
+              
+        else:
+            memory = result
 
     if answer == "n":
-        print(msg_5)
-        answer = input()
-        if answer == "y":
-            continue
-        elif answer == "n":
-            break
+        memory = 0
+   
+    print(msg_5)
+    answer1 = input()
+    
+    if answer == "y":
+       continue
+    elif answer == "n":
+        break
